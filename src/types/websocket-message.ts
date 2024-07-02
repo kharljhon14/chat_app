@@ -5,7 +5,8 @@ export interface MessageType {
 }
 
 export interface WebSocketMessageType {
-  message_type: 'UserList' | 'NewMessage';
+  message_type: 'UserList' | 'NewMessage' | 'NewUser';
   users: string[] | null;
   message: MessageType | null;
+  username: string | null;
 }

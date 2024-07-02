@@ -14,8 +14,9 @@ export async function joinServer(
   _formState: JoinServerFormState,
   formData: FormData
 ): Promise<JoinServerFormState> {
+  const username = formData.get('username');
   const result = joinServerSchema.safeParse({
-    username: formData.get('username')
+    username
   });
 
   if (!result.success) {
@@ -27,9 +28,8 @@ export async function joinServer(
   const ws = new WebSocket('http://127.0.0.1:8000/');
 
   ws.onopen = () => {
-    console.log('CONNECTED');
+    ws.send(JSON.stringify({ username: username }));
   };
-
   return {
     errors: {},
     success: true

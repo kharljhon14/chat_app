@@ -1,11 +1,11 @@
-export interface Message {
+export interface MessageType {
   author: string;
   message: string;
   created_at: string;
 }
 
-export interface WebSocketMessage {
+export interface WebSocketMessageType {
   message_type: 'UserList' | 'NewMessage';
   users: string[] | null;
-  message: Message | null;
+  message: MessageType | null;
 }

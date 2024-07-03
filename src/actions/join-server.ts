@@ -1,4 +1,5 @@
 import { WebSocketMessageType } from '@/types/websocket-message';
+import { redirect } from 'next/navigation';
 import { z } from 'zod';
 const joinServerSchema = z.object({
   username: z.string().min(3)
@@ -26,6 +27,8 @@ export async function joinServer(
     };
   }
 
+  // Todo: Move to env later
+
   const ws = new WebSocket('http://127.0.0.1:8000/');
 
   ws.onopen = () => {
@@ -40,7 +43,7 @@ export async function joinServer(
     }
   };
 
-  // Todo: Redirect user to chat
+  redirect('/chat');
 
   return {
     errors: {},

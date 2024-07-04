@@ -1,17 +1,11 @@
 import ChatForm from '@/features/forms/chat-form';
-import MessageList from '@/features/lists/message-list';
-import UserList from '@/features/lists/user-list';
+import WebSocketFetcher from '@/features/websocket-fetcher';
 
 export default function ChatPage() {
   return (
     <div className="container">
       <div>
-        <div>
-          <UserList users={[]} />
-        </div>
-        <div>
-          <MessageList messages={[]} />
-        </div>
+        <WebSocketFetcher />
       </div>
       <ChatForm />
     </div>
